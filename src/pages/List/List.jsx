@@ -80,7 +80,7 @@ const List = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(setNumberBill(parameters?.num))
+        dispatch(setNumberBill(parameters?.invoice_num))
     }, [parameters])
 
 

@@ -35,7 +35,7 @@ const InputBillNumber = ({ sub, number, numberFirst, setNumber, errorEmpity, err
     }
 
     const handleBlur = () => {
-        Number(numberFirst) !== Number(number) && getCheckNumber(0, number, detail?.partnership_id)
+        Number(numberFirst) !== Number(number) && getCheckNumber(5, number, detail?.partnership_id)
             .then(res => setError(false))
             .catch(err => { number !== '' && setError(true) })
         setFocus(false)
@@ -48,10 +48,10 @@ const InputBillNumber = ({ sub, number, numberFirst, setNumber, errorEmpity, err
         setLoad(true)
 
         setTimeout(() => {
-            if (detail?.bill_num) {
-                detail?.bill_num === number ? setNumber(detail?.bill_num + 1) : setNumber(detail?.bill_num)
+            if (detail?.invoice_num) {
+                detail?.invoice_num === number ? setNumber(detail?.invoice_num + 1) : setNumber(detail?.invoice_num)
             } else {
-                parameters?.num === number ? setNumber(parameters?.num + 1) : setNumber(parameters?.num)
+                parameters?.invoice_num === number ? setNumber(parameters?.invoice_num + 1) : setNumber(parameters?.invoice_num)
             }
 
             setDone(true)

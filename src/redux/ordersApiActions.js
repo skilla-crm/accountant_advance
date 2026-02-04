@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const token = document.getElementById('root_bills')?.getAttribute('token');
+const token = document.getElementById('root_advance')?.getAttribute('token');
 const baseURL = process.env.REACT_APP_BASE_URL;
 
 export const billsApiActions = createApi({
@@ -17,7 +17,7 @@ export const billsApiActions = createApi({
 
     getBills: build.query({
       query: (params) => ({
-        url: `bills`,
+        url: `advance_invoices`,
         method: 'GET',
         params
       }),
@@ -27,7 +27,7 @@ export const billsApiActions = createApi({
 
     getBill: build.query({
       query: (id) => ({
-        url: `bills/detail/${id}`,
+        url: `advance_invoices/detail/${id}`,
         method: 'GET',
       }),
       transformResponse: (response) => response?.data,
@@ -44,7 +44,7 @@ export const billsApiActions = createApi({
 
     createBill: build.mutation({
       query: (body) => ({
-        url: `bills/create`,
+        url: `advance_invoices/create`,
         method: 'POST',
         body: body
       }),
@@ -53,7 +53,7 @@ export const billsApiActions = createApi({
 
     updateBill: build.mutation({
       query: ({ body, id }) => ({
-        url: `bills/update/${id}`,
+        url: `advance_invoices/update/${id}`,
         method: 'PATCH',
         body: body
       }),
@@ -62,7 +62,7 @@ export const billsApiActions = createApi({
 
     deleteBill: build.mutation({
       query: (id) => ({
-        url: `bills/delete/${id}`,
+        url: `advance_invoices/delete/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Bills']
@@ -70,7 +70,7 @@ export const billsApiActions = createApi({
 
     sendBill: build.mutation({
       query: ({ body, id }) => ({
-        url: `bills/send/${id}`,
+        url: `advance_invoices/send/${id}`,
         method: 'POST',
         body: body
       }),
@@ -79,7 +79,7 @@ export const billsApiActions = createApi({
 
     getBillDownload: build.mutation({
       query: ({ id, params }) => ({
-        url: `bills/download/${id}`,
+        url: `advance_invoices/download/${id}`,
         method: 'GET',
         params,
         responseHandler: (response) => {
@@ -89,23 +89,9 @@ export const billsApiActions = createApi({
       invalidatesTags: ['Bill', 'Bills']
     }),
 
-    createUpdByBill: build.mutation({
-      query: (body) => ({
-        url: `upd/create_by_bill`,
-        method: 'POST',
-        body: body
-      }),
-      invalidatesTags: ['Bills']
-    }),
+ 
 
-    createActByBill: build.mutation({
-      query: (body) => ({
-        url: `acts/create_by_bill`,
-        method: 'POST',
-        body: body
-      }),
-      invalidatesTags: ['Bills']
-    })
+   
 
   })
 });

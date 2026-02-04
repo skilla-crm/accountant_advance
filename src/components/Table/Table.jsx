@@ -50,7 +50,7 @@ const Table = ({ data }) => {
                     <th className={s.recipient}>Получатель</th>
                     <th className={s.bill}>Счет получателя</th>
                     <th className={s.progress}>Прогресс</th>
-                    <th className={s.status}>Оплачен
+                   {/*  <th className={s.status}>Оплачен
                         <div className={s.container_tooltip}>
                             <IconInfo
                                 onMouseEnter={handleOpenTooltip}
@@ -61,7 +61,7 @@ const Table = ({ data }) => {
                             <Tooltip id={'pay'} open={openTooltip === 'pay'} />
                         </div>
 
-                    </th>
+                    </th> */}
                     <th className={s.button}></th>
                 </tr>
 
@@ -129,9 +129,9 @@ const Row = ({ bill, lastLines }) => {
             <td className={s.progress}>
                 <Progress lastLines={lastLines} progress={bill?.progress} />
             </td>
-            <td className={s.status}>
+           {/*  <td className={s.status}>
                 {bill?.is_paid && <IconDone />}
-            </td>
+            </td> */}
             <td className={classNames(s.button, focus && s.button_vis)}>
                 {/* <IconCloseBlue/> */}
             </td>

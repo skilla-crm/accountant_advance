@@ -6,10 +6,10 @@ import { store } from './redux/store';
 import './index.css';
 import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root_bills'));
+const root = ReactDOM.createRoot(document.getElementById('root_advance'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename='new/bills'>
+    <BrowserRouter basename='new/advance'>
       <Provider store={store}>
         <App />
       </Provider>

@@ -19,7 +19,7 @@ import History from '../History/History';
 
 
 const Bill = ({ id, type, setType }) => {
-    const ispro = document.getElementById(`root_bills`).getAttribute('ispro');
+    const ispro = document.getElementById(`root_advance`).getAttribute('ispro');
     const { data: parameters, isLoading: isLoadingParams } = useGetParametersQuery();
     const { customer, detail, numberBill, date } = useSelector((state) => state.mainInfo);
     const { positionsValidation } = useSelector((state) => state.validation);
@@ -27,7 +27,7 @@ const Bill = ({ id, type, setType }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        (numberBill == '' || !numberBill) && dispatch(setNumberBill(parameters?.num))
+        (numberBill == '' || !numberBill) && dispatch(setNumberBill(parameters?.invoice_num))
     }, [parameters])
 
     const handleResetErrorPositions = () => {

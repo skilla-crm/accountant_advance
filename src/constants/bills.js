@@ -1,7 +1,7 @@
 
 
-export const TITLE_BILLS = 'Счета заказчикам';
-export const BUTTON_TEXT = 'Выставить счет'
+export const TITLE_BILLS = 'Авансовые счета-фактуры';
+export const BUTTON_TEXT = 'Создать авансовую счет-фактуру'
 export const BUTTON_TEXT_CREATE = 'Создать'
 export const BUTTON_TEXT_EDIT = 'Создать'
 export const BUTTON_SEND_EMAIL = 'Отправить по e-mail'

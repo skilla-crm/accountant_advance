@@ -47,7 +47,7 @@ const ModalDelete = ({ open, setOpen, id }) => {
                 <div className={s.header}>
                     <div className={s.title}>
                          <IconDeleteBlack />
-                        <p>Удаление счета</p>
+                        <p>Удаление авансовой счет-фактуры</p>
                     </div>
 
 

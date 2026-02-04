@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import printJS from 'print-js'
 //api
-import { useGetBillDownloadMutation, useGetParametersQuery, useCreateUpdByBillMutation, useCreateActByBillMutation } from '../../redux/ordersApiActions';
+import { useGetBillDownloadMutation, useGetParametersQuery } from '../../redux/ordersApiActions';
 //constants
-import { BUTTON_EDIT, BUTTON_SEND_EMAIL, BUTTON_PRINT, BUTTON_DOWNLOAD, BUTTON_CREATE_OPTIONS } from '../../constants/bills';
+import { BUTTON_EDIT, BUTTON_SEND_EMAIL, BUTTON_PRINT, BUTTON_DOWNLOAD } from '../../constants/bills';
 //icons
 import { ReactComponent as IconMail } from '../../assets/icons/IconMail.svg'
 import { ReactComponent as IconEdit } from '../../assets/icons/iconEdit.svg'
@@ -33,8 +33,6 @@ const Buttons = ({ id, setType }) => {
     const [modalDelete, setModalDelete] = useState(false)
     const [modalEmail, setModalEmail] = useState(false)
     const [getBillDownload, { isLoading }] = useGetBillDownloadMutation();
-    const [createUpdByBill, { data, isError, isLoadingUpd }] = useCreateUpdByBillMutation();
-    const [createActByBill, { isLoadingAct }] = useCreateActByBillMutation();
     const [loadDownload, setLoadDownload] = useState(false)
     const [loadPrint, setLoadPrint] = useState(false)
     const [notificationOpen, setNotification] = useState({ state: false })
@@ -125,48 +123,6 @@ const Buttons = ({ id, setType }) => {
 
     ]
 
-    const createOptions = [
-        {
-            id: 1,
-            name: 'УПД',
-            icon: IconDoc,
-            default: false,
-            handler: () => handleCreateUpd()
-        },
-
-        {
-            id: 2,
-            name: 'Акт',
-            icon: IconDoc,
-            default: false,
-            handler: () => handleCreateAct()
-        }
-
-    ]
-
-    const handleCreateUpd = () => {
-        createUpdByBill({ bill_id: id })
-            .then((data) => {
-                if (data.data.success) {
-                    const id = data.data.data.id;
-                    window.open(`https://lk.skilla.ru/new/upd/detail/${id}`, '_blank')
-                } else {
-
-                }
-            });
-    }
-
-    const handleCreateAct = () => {
-        createActByBill({ bill_id: id })
-            .then((data) => {
-                if (data.data.success) {
-                    const id = data.data.data.id;
-                    window.open(`https://lk.skilla.ru/new/act/detail/${id}`, '_blank')
-                } else {
-
-                }
-            });
-    }
 
     const handleOpenDelete = () => {
         setModalDelete(true)
@@ -214,14 +170,6 @@ const Buttons = ({ id, setType }) => {
                 isLoading={false}
             />
 
-            <ButtonOptions
-                handler={() => handleDownload(params1)}
-                buttonText={BUTTON_CREATE_OPTIONS}
-                Icon={null}
-                isLoading={loadDownload}
-                options={createOptions}
-                isSelect
-            />
 
             <ButtonOptions
                 handler={() => handleDownload(params1)}

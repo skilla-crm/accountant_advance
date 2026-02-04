@@ -73,7 +73,7 @@ const MainInfoBlock = ({ parameters, disabled }) => {
                     dispatch(setContract(data?.contracts?.[0]))
                     const newDetail = parameters?.partnerships_details?.find(el => el.partnership_id === data?.contracts?.[0]?.partnership_id)
                     dispatch(setDetail({ ...data?.contracts?.[0]?.partnership_details, partnership_name: data?.contracts?.[0]?.partnership_name, partnership_id: data?.contracts?.[0]?.partnership_id, nds: newDetail?.nds }))
-                    newDetail && dispatch(setNumberBill(newDetail?.bill_num))
+                    newDetail && dispatch(setNumberBill(newDetail?.invoice_num))
                 }}
                 disabled={disabled || draft === 1}
                 error={!customerValidation}
@@ -96,7 +96,7 @@ const MainInfoBlock = ({ parameters, disabled }) => {
                      dispatch(setContract(data))
                     const newDetail = parameters?.partnerships_details?.find(el => el.partnership_id === data?.partnership_id)
                     dispatch(setDetail({ ...data?.partnership_details, partnership_name: data?.partnership_name, partnership_id: data?.partnership_id, nds: newDetail?.nds }))
-                    newDetail && dispatch(setNumberBill(newDetail?.bill_num))
+                    newDetail && dispatch(setNumberBill(newDetail?.invoice_num))
                 }}
             />
 
@@ -118,7 +118,7 @@ const MainInfoBlock = ({ parameters, disabled }) => {
                 setActiveItem={data => {
                     dispatch(setDetail(data))
                     if (detail?.partnership_id !== data?.partnership_id) {
-                        dispatch(setNumberBill(data?.bill_num))
+                        dispatch(setNumberBill(data?.invoice_num))
                     }
                 }}
                 disabled={disabled}
