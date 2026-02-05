@@ -65,7 +65,7 @@ const Buttons = ({ id, setType }) => {
         const data = await getBillDownload({ params, id }).unwrap()
         const link = document.createElement('a');
         link.href = URL.createObjectURL(data);
-        link.setAttribute('download', `Cчет №${numberBill} от ${dayjs(date).format('DD.MM.YYYY')}.${params.format}`);
+        link.setAttribute('download', `Авансовая счет-фактура №А${numberBill} от ${dayjs(date).format('DD.MM.YYYY')}.${params.format}`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -202,8 +202,8 @@ const Buttons = ({ id, setType }) => {
                 open={modalEmail}
                 setOpen={setModalEmail}
                 contacts={customer?.contacts?.filter(el => el.e_mail !== '')}
-                theme={`Счет № ${numberBill} от ${dayjs(date).format('DD.MM.YYYY')}`}
-                text={parameters?.bill_message}
+                theme={`Авансовая счет-фактура №А${numberBill} от ${dayjs(date).format('DD.MM.YYYY')}`}
+                text={'Авансовая счет-фактура в приложенном файле'}
                 formats={[{ id: 1, name: 'PDF с печатью' }, { id: 2, name: 'Word с печатью' }]}
                 partnerEmail={parameters?.email}
                 handleSendEmailSuccess={handleSendEmailSuccess}

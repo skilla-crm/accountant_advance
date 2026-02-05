@@ -52,12 +52,12 @@ const Detail = () => {
             data?.draft === 1 && setType('draft')
             dispatch(setDraft(data?.draft))
             dispatch(setDate(dayjs(data?.date)))
-            dispatch(setNumberBill(data?.invoice_num))
-            dispatch(setNumberBillFirst(data?.invoice_num))
+            dispatch(setNumberBill(data?.number))
+            dispatch(setNumberBillFirst(data?.number))
             dispatch(setOrders(data?.orders))
             dispatch(setLogs(data?.logs))
 
-            document.title = `Авансовая счет-фактура №${data?.invoice_num} от ${dayjs(data?.date).format('DD.MM.YYYY')}`
+            document.title = `Авансовая счет-фактура №А${data?.number} от ${dayjs(data?.date).format('DD.MM.YYYY')}`
 
 
 

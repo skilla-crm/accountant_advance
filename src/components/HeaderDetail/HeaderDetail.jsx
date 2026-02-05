@@ -129,10 +129,10 @@ const HeaderDetail = ({ id, type, setType }) => {
 
     return (
         <div className={s.root}>
-            {type == 'create' && <h2>Новая авансовая счет-фактура №{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
-            {type == 'draft' && <h2>Новая авансовая счет-фактура №{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
-            {type == 'detail' && <h2>Авансовая счет-фактура №{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
-            {type == 'edit' && <h2>Авансовая счет-фактура №{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
+            {type == 'create' && <h2>Новая авансовая счет-фактура №А{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
+            {type == 'draft' && <h2>Новая авансовая счет-фактура №А{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
+            {type == 'detail' && <h2>Авансовая счет-фактура №А{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
+            {type == 'edit' && <h2>Авансовая счет-фактура №А{numberBill} от {dayjs(date).format('DD.MM.YYYY')}</h2>}
 
             {type == 'create' && <Button
                 type={'create'}
