@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import './index.css';
 import App from './App';
+const baseName = process.env.REACT_APP_BASE_NAME;
 
 const root = ReactDOM.createRoot(document.getElementById('root_advance'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename='new/advance'>
+    <BrowserRouter basename={baseName}>
       <Provider store={store}>
         <App />
       </Provider>
