@@ -15,7 +15,8 @@ import { setPositionsValidation } from '../../redux/validation/slice';
 import HeaderDetail from '../HeaderDetail/HeaderDetail';
 import MainInfoBlock from '../MainInfoBlock/MainInfoBlock';
 import ServicesBlock from '../ServicesBlock/ServicesBlock';
-import History from '../History/History';
+import { HistoryLog } from '../HistoryLog/HistoryLog';
+import ProDisabled from '../ProDisabled/ProDisabled';
 
 
 const Bill = ({ id, type, setType }) => {
@@ -59,13 +60,8 @@ const Bill = ({ id, type, setType }) => {
                         <p>Предварительный просмотр в разработке</p>
                     </div>
 
-                    {(type === 'detail' || type === 'edit') && ispro === '1' && <History logs={logs} />}
-                    {(type === 'detail' || type === 'edit') && ispro === '0' && <div className={s.pro}>
-                        <h3>История изменений</h3>
-                        <img src={historyblur} alt='мстория доступна для про'></img>
-                        <p onClick={openModalPro}>Доступно только для  <BadgePro /></p>
-
-                    </div>}
+                    {(type === 'detail' || type === 'edit') && ispro === '1' && <HistoryLog logs={logs} />}
+                    {(type === 'detail' || type === 'edit') && ispro === '0' && <ProDisabled />}
                 </div>
             </div>
         </div>
