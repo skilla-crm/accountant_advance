@@ -12,6 +12,8 @@ import {
     setNumberValidation,
     setPositionsValidation
 } from '../../redux/validation/slice';
+//handlers
+import ErrorHandler from '../../handlers/ErrorHandler';
 //components
 import Button from '../Genegal/Button/Button';
 import Buttons from '../Buttons/Buttons';
@@ -76,11 +78,15 @@ const HeaderDetail = ({ id, type, setType }) => {
         if (handleValidation()) {
             createBill(dataForSend)
                 .then((data) => {
-                    if (data.data.success) {
+                    if (data?.data?.success) {
                         const id = data.data.data.id;
                         navigate(`/detail/${id}`)
-                    } else {
+                        return
+                    }
 
+                    if (data?.error) {
+                        ErrorHandler(data?.error?.status)
+                        return
                     }
                 });
             return
@@ -117,10 +123,13 @@ const HeaderDetail = ({ id, type, setType }) => {
         if (handleValidation()) {
             updateBill({ body: dataForSend, id })
                 .then((data) => {
-                    if (data.data.success) {
+                    if (data?.data?.success) {
                         setType('detail')
-                    } else {
+                    }
 
+                    if (data?.error) {
+                        ErrorHandler(data?.error?.status)
+                        return
                     }
                 });
             return

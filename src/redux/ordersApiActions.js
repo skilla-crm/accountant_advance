@@ -39,7 +39,8 @@ export const billsApiActions = createApi({
         url: `parameters`,
         method: 'GET',
       }),
-      transformResponse: (response) => response?.data
+      transformResponse: (response) => response?.data,
+      providesTags: ['Upds', 'Upd']
     }),
 
     createBill: build.mutation({
@@ -89,9 +90,9 @@ export const billsApiActions = createApi({
       invalidatesTags: ['Bill', 'Bills']
     }),
 
- 
 
-   
+
+
 
   })
 });

@@ -30,7 +30,7 @@ const List = () => {
     const [anim, setAnim] = useState(false)
     const [bills, setBills] = useState([])
     const [link, setLink] = useState(null)
-    const { data: parameters, isLoading: isLoadingParams } = useGetParametersQuery();
+    const { data: parameters, isLoading: isLoadingParams, refetch: refetchParam } = useGetParametersQuery();
     const { search, filterCompanys, filterCustomers, filterStatus } = useSelector((state) => state.filters);
     const { dateStart, dateEnd } = useSelector((state) => state.dateRange);
     const { updateList } = useSelector((state) => state.updateData);
@@ -54,6 +54,7 @@ const List = () => {
     useEffect(() => {
         if (updateList > 0 && !isUninitialized) {
             refetch()
+            refetchParam()
             return
         }
     }, [updateList, isUninitialized])
@@ -72,7 +73,7 @@ const List = () => {
         dispatch(setDetail({}))
         dispatch(setDate(dayjs()))
         dispatch(setOrders([]))
-        dispatch(setPositions([{ id: 1, rate: {}, count: '', units: 'ед', code: '642', price: '', total: '' }]))
+        dispatch(setPositions([{ id: 1, rate: {}, count: '', units: 'Ед', code: '642', price: '', total: '' }]))
         dispatch(setCustomerValidation(true))
         dispatch(setDetailValidation(true))
         dispatch(setNumberValidation(true))

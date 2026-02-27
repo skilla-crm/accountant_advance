@@ -13,7 +13,7 @@ import { ReactComponent as IconCloseS } from './icons/iconCloseS.svg'
 import LoaderButton from './LoaderButton/LoaderButton';
 import Switch from './Switch/Switch';
 import FormatList from './FormatList/FormatList';
-import SendToast from '../../hooks/SendToast';
+import SendToast from '../../handlers/SendToast';
 //utils
 import { emailValidate } from './utils/EmailValidate';
 
@@ -44,7 +44,7 @@ const EmailSender = ({ id, open, setOpen, contacts, theme, text, formats, partne
     }, [text])
 
     useEffect(() => {
-        const result = contacts?.filter(el => el.e_mail !== '').map(item => {return {...item, email: item.e_mail}})
+        const result = contacts?.filter(el => el.e_mail !== '').map(item => { return { ...item, email: item.e_mail } })
         setEmails(result)
     }, [contacts])
 
@@ -74,7 +74,7 @@ const EmailSender = ({ id, open, setOpen, contacts, theme, text, formats, partne
             .then(res => {
                 if (res.data.success) {
                     setOpen(false)
-                    SendToast('email' , 'Письмо отправлено')
+                    SendToast('email', 'Письмо отправлено')
                     setEmails(contacts?.filter(el => el.email !== ''))
                     setThemeValue(theme)
                     setTextValue(text)
