@@ -1,4 +1,4 @@
-name: Deploy Fronted Advance dev
+name: Deploy Fronted ADVANCE (dev)
 
 on:
   push:
